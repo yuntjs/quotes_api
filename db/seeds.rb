@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+(1..500).each do |x|
+  fn = Faker::Name.name
+  qu = Faker::Hipster.sentence
+  Quote.create(author: fn, content: qu)
+end
