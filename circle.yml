@@ -5,7 +5,7 @@ machine:
 dependencies:
   overrides:
     - docker info
-    - docker build --rm=false -t taejunyun/quotes-api-auto .
+    - docker build --rm=false -t taejunyun/quotesapi .
 
 deployment:
   hub:
