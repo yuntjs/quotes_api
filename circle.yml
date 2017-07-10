@@ -2,4 +2,4 @@ deployment:
   dockerhub:
     branch: master
     commands:
-      - bash -c $DOCKER_TRIGGER
+      - $DOCKER_TRIGGER
