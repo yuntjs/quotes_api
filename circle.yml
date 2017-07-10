@@ -1,15 +1,5 @@
-machine:
-  services:
-    - docker
-
-dependencies:
-  overrides:
-    - docker info
-    - docker build --rm=false -t taejunyun/quotesapi .
-
 deployment:
-  hub:
+  dockerhub:
     branch: master
     commands:
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push taejunyun/quotesapi:latest
+      - $DOCKER_TRIGGER
