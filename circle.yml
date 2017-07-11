@@ -27,3 +27,6 @@ jobs:
           docker build -t   taejunyun/quotesapi:$TAG .      # (3)
           docker login -u $DOCKER_USER -p $DOCKER_PASS         # (4)
           docker push taejunyun/quotesapi:$TAG
+
+      - run:
+          command: ./deploy.sh
