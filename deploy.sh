@@ -11,4 +11,5 @@ ssh -o "StrictHostKeyChecking no" docker@ec2-52-14-238-30.us-east-2.compute.amaz
   docker tag quotesapi:latest taejunyun/quotesapi
   docker push taejunyun/quotesapi
   docker stack deploy -c /home/docker/quotes-provision-prod/docker-compose.yml app
+  
 ENDSSH
