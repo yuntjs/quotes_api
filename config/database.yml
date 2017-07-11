@@ -32,8 +32,7 @@ default: &default
 development:
   <<: *default
   database: quotes-api_development
-  host: localhost
-  port: 5432
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -67,7 +66,7 @@ development:
 test:
   <<: *default
   database: quotes-api_test
-  host: localhost
+
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -91,8 +90,4 @@ production:
   <<: *default
   database: quotes-api_production
   username: quotes-api
-  username: postgres
-  # password:
-  # host: db
-  # port: 5432
   password: <%= ENV['QUOTES-API_DATABASE_PASSWORD'] %>
