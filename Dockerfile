@@ -5,7 +5,7 @@ USER root
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY . ./
-RUN bundle install
+RUN bundle update
 EXPOSE 3000
 # CMD ["bundle","exec","rails","server","-b","0.0.0.0"]
 CMD ["./fire-up-rails.sh"]
