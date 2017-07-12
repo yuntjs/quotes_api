@@ -9,7 +9,7 @@ RSpec.describe Quote, type: :model do
   end
 
   it "has an author" do
-    expect(quote.author).not_to eq "Tae jun Yun"
+    expect(quote.author).to eq "Tae jun Yun"
   end
 
 end
