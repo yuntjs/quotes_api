@@ -1,5 +1,7 @@
 version: 2
-
+test:
+  overrides:
+    - rails spec
 
 jobs:
   build:
