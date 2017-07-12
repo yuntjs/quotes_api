@@ -8,6 +8,10 @@ jobs:
   build:
     docker:
       - image: golang:1.6.4   # (1)
+      - image: ruby:2.4.1
+        environment:
+          RAILS_ENV: test
+      - image: postgres:9.5
     working_directory: /go/src/github.com/yuntjs/quotes_api
     environment:
       - TAG=0.1.$CIRCLE_BUILD_NUM
