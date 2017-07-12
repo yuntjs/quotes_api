@@ -10,7 +10,7 @@ jobs:
           - PG_USER: ubuntu
           - RAILS_ENV: test
           - RACK_ENV: test
-          
+
       - image: postgres:9.5
         environment:
           - POSTGRES_USER: ubuntu
@@ -18,12 +18,22 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Install System Dependencies
-          command: apt-get update -qq && apt-get install -y build-essential postgresql libpq-dev nodejs rake
+      # Restore bundle cache
+      - type: cache-restore
+        key: rails-demo-{{ checksum "Gemfile.lock" }}
+
+      # - run:
+      #     name: Install System Dependencies
+      #     command: apt-get update -qq && apt-get install -y build-essential postgresql libpq-dev nodejs rake
       - run:
           name: Install Ruby Dependencies
-          command: bundle install
+          command: bundle install --path vendor/bundle
+
+      - type: cache-save
+        key: rails-demo-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
       - run:
           name: Set up DB
           command: |
@@ -32,7 +42,12 @@ jobs:
           environment:
             DATABASE_URL: "postgres://ubuntu@localhost:5432/quotes-api_test"
 
+      - run:
+          name: Run Rspec
+          command: bundle exec rspec
+
       - setup_remote_docker   # (2)
+      
       - run:
           name: Install Docker client
           command: |
