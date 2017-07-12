@@ -12,17 +12,20 @@ jobs:
 
     steps:
       - checkout
+
       - name: Install System Dependencies
         command: apt-get update -qq && apt-get install -y build-essential postgresql libpq-dev nodejs rake
+
       - name: Install Ruby Dependencies
         command: bundle install
+
       - name: Set up DB
         command: |
           bundle exec rake db:create db:schema:load --trace
           bundle exec rake db:migrate
 
       - setup_remote_docker   # (2)
-      
+
       - run:
           name: Install Docker client
           command: |
