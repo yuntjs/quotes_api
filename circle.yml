@@ -6,9 +6,15 @@ jobs:
     docker:
       - image: ruby:2.4.1   # (1)
         environment:
+          - PG_HOST: localhost
+          - PG_USER: ubuntu
           - RAILS_ENV: test
           - RACK_ENV: test
+          
       - image: postgres:9.5
+        environment:
+          - POSTGRES_USER: ubuntu
+          - POSTGRES_DB: quotes-api_test
 
     steps:
       - checkout
@@ -23,6 +29,8 @@ jobs:
           command: |
             bundle exec rake db:create db:schema:load --trace
             bundle exec rake db:migrate
+          environment:
+            DATABASE_URL: "postgres://ubuntu@localhost:5432/quotes-api_test"
 
       - setup_remote_docker   # (2)
       - run:
