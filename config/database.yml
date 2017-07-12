@@ -67,6 +67,7 @@ test:
   <<: *default
   database: quotes-api_test
   DATABASE_URL: ENV['DATABASE_URL']
+  username: ubuntu
   host: localhost
   port: 5432
 
