@@ -14,10 +14,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Testing rspec
-          command: make test
-          environment:
-            RAILS_ENV: test
+          name: install bundler
+          command: bundle install
+      - run:
+          name: run test
+          command: rails spec
       # ... steps for building/testing app ...
       - setup_remote_docker   # (2)
       # use a primary image that already has Docker (recommended)
