@@ -13,8 +13,8 @@ jobs:
     working_directory: /go/src/github.com/yuntjs/quotes_api
     steps:
       # Restore bundle cache
-      - type: cache-restore
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
+      # - type: cache-restore
+      #   key: rails-demo-{{ checksum "Gemfile.lock" }}
 
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
