@@ -1,9 +1,10 @@
 version: 2
-test:
-  overrides:
-    - rails spec
 
 jobs:
+  test:
+    overrides:
+      - rails spec
+
   build:
     docker:
       - image: golang:1.6.4   # (1)
@@ -13,12 +14,7 @@ jobs:
     steps:
       - checkout
       # ... steps for building/testing app ...
-      - run:
-          name: Test spec
-          command: bundle exec rails spec
-
       - setup_remote_docker   # (2)
-
       # use a primary image that already has Docker (recommended)
       # or install it during a build like we do here
       - run:
