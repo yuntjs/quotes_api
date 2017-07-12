@@ -13,6 +13,9 @@ jobs:
     steps:
       - checkout
       # ... steps for building/testing app ...
+      - run:
+          name: Test spec
+          command: bundle exec rails spec
 
       - setup_remote_docker   # (2)
 
